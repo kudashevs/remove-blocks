@@ -6,7 +6,7 @@ describe('default test suite', () => {
   it.each([
     ['production', '/* devblock:start */ any /* devblock:end */', ''],
     ['test', '/* devblock:start */ any /* devblock:end */', ''],
-  ])('can proceed in %s environment', (environment, input, expected) => {
+  ])('proceeds in %s environment', (environment, input, expected) => {
     process.env.NODE_ENV = environment;
 
     expect(process.env.NODE_ENV).toBe(environment);
@@ -15,16 +15,29 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
-  it.each([
-    ['development', '/* devblock:start */ any /* devblock:end */', '/* devblock:start */ any /* devblock:end */'],
-  ])('can skip in %s environment', (environment, input, expected) => {
-    process.env.NODE_ENV = environment;
+  it('skips in development environment by default', () => {
+    process.env.NODE_ENV = 'development';
 
-    expect(process.env.NODE_ENV).toBe(environment);
+    let input = '/* devblock:start */ visible /* devblock:end */';
+    let expected = '/* devblock:start */ visible /* devblock:end */';
+
+    expect(process.env.NODE_ENV).toBe('development');
     expect(sut(input, {})).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
+
+  it('can skip in test environment when option provided', () => {
+    process.env.NODE_ENV = 'test';
+
+    let input = '/* devblock:start */ visible /* devblock:end */';
+    let expected = '/* devblock:start */ visible /* devblock:end */';
+
+    expect(process.env.NODE_ENV).toBe('test');
+    expect(sut(input, {exclude: ['test']})).toBe(expected);
+
+    process.env.NODE_ENV = originalMode;
+  })
 
   it('can remove a code block marked with defaults', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
