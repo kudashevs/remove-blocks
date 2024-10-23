@@ -33,6 +33,7 @@
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --colors",
+    "test:coverage": "npm run test -- --collectCoverageFrom=\"lib/**/*.js\" --coverage",
     "lint": "eslint --cache .",
     "format": "prettier --write \"**/*.+(js|json)\" --"
   },
