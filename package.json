@@ -35,5 +35,18 @@
     "test": "cross-env NODE_ENV=test jest --colors",
     "lint": "eslint --cache .",
     "format": "prettier --write \"**/*.+(js|json)\" --"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "automock": false,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ]
   }
 }
