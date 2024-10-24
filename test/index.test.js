@@ -37,7 +37,7 @@ describe('default test suite', () => {
     expect(sut(input, {exclude: ['test']})).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
-  })
+  });
 
   it('can remove a code block marked with defaults', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
@@ -48,10 +48,8 @@ describe('default test suite', () => {
 
   it('can remove a code block from a string parameter', () => {
     let options = {
-      blocks: [
-        'debug'
-      ],
-    }
+      blocks: ['debug'],
+    };
 
     let input = 'visible /* debug:start */ will be removed /* debug:end */';
     let expected = 'visible ';
