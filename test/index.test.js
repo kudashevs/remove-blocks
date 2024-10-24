@@ -27,7 +27,7 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
-  it('can skip in test environment when option provided', () => {
+  it('can skip in test environment when an option provided', () => {
     process.env.NODE_ENV = 'test';
 
     let input = '/* devblock:start */ visible /* devblock:end */';
@@ -53,14 +53,14 @@ describe('default test suite', () => {
     expect(sut(input, {blocks: [{}]})).toBe(expected);
   });
 
-  it('can remove a code block marked with defaults', () => {
+  it('can remove a block generated from defaults', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible ';
 
     expect(sut(input, {})).toBe(expected);
   });
 
-  it('can remove a code block from a string parameter', () => {
+  it('can remove a block generated from a string parameter', () => {
     let options = {
       blocks: ['debug'],
     };
@@ -71,7 +71,7 @@ describe('default test suite', () => {
     expect(sut(input, options)).toBe(expected);
   });
 
-  it('can remove a code block from an object parameter', () => {
+  it('can remove a block generated from an object parameter', () => {
     let options = {
       blocks: [
         {
@@ -167,21 +167,21 @@ describe('default test suite', () => {
     expect(sut(input, options)).toBe(expected);
   });
 
-  it('can remove a code block marked in lower case', () => {
+  it('can remove a block marked in lower case', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible ';
 
     expect(sut(input, {})).toBe(expected);
   });
 
-  it('cannot remove a code block marked in upper case with default settings', () => {
+  it('cannot remove a block marked in upper case with default settings', () => {
     let input = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
     let expected = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
 
     expect(sut(input, {})).toBe(expected);
   });
 
-  it('can remove a code block marked in upper case with provided settings', () => {
+  it('can remove a block marked in upper case with provided settings', () => {
     let options = {
       blocks: [
         {
