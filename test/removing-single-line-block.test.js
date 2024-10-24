@@ -10,7 +10,7 @@ module.exports = function addOne(num) {
     return num + one;
 }`;
 
-  it('can apply a multi-line replacement with an object parameter and keepspace set to true', () => {
+  it('can remove a single-line comment generated from an object parameter', () => {
     let options = {
       blocks: [
         {

@@ -10,13 +10,13 @@ module.exports = function addOne(num) {
     return num + one;
 }`;
 
-  it('can remove a multi-line comment from a string parameter', () => {
+  it('can remove a multi-line comment generated from a string parameter', () => {
     const output = sut(input, {blocks: ['debug']});
 
     expect(converter(output)).toBe(converter(expected));
   });
 
-  it('can remove a multi-line comment from an object parameter and keepspace set to true', () => {
+  it('can remove a multi-line comment generated from an object parameter', () => {
     let options = {
       blocks: [
         {
