@@ -39,6 +39,20 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
+  it('can handle an empty blocks option', () => {
+    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    let expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
+
+    expect(sut(input, {blocks: []})).toBe(expected);
+  });
+
+  it('can handle an empty object in the blocks option', () => {
+    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    let expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
+
+    expect(sut(input, {blocks: [{}]})).toBe(expected);
+  });
+
   it('can remove a code block marked with defaults', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible ';
