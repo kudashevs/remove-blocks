@@ -26,6 +26,8 @@ module.exports = function addOne(num) {
       ],
     };
 
-    expect(sut(input, options)).toBe(converter(expected));
+    const output = sut(input, options);
+
+    expect(output).toBe(converter(expected));
   });
 });

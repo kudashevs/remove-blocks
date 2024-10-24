@@ -18,8 +18,8 @@ describe('default test suite', () => {
   it('skips in development environment by default', () => {
     process.env.NODE_ENV = 'development';
 
-    let input = '/* devblock:start */ visible /* devblock:end */';
-    let expected = '/* devblock:start */ visible /* devblock:end */';
+    const input = '/* devblock:start */ visible /* devblock:end */';
+    const expected = '/* devblock:start */ visible /* devblock:end */';
 
     expect(process.env.NODE_ENV).toBe('development');
     expect(sut(input, {})).toBe(expected);
@@ -30,8 +30,8 @@ describe('default test suite', () => {
   it('can skip in test environment when an option provided', () => {
     process.env.NODE_ENV = 'test';
 
-    let input = '/* devblock:start */ visible /* devblock:end */';
-    let expected = '/* devblock:start */ visible /* devblock:end */';
+    const input = '/* devblock:start */ visible /* devblock:end */';
+    const expected = '/* devblock:start */ visible /* devblock:end */';
 
     expect(process.env.NODE_ENV).toBe('test');
     expect(sut(input, {exclude: ['test']})).toBe(expected);
@@ -40,39 +40,42 @@ describe('default test suite', () => {
   });
 
   it('can handle an empty blocks option', () => {
-    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
 
     expect(sut(input, {blocks: []})).toBe(expected);
   });
 
   it('can handle an empty object in the blocks option', () => {
-    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
 
     expect(sut(input, {blocks: [{}]})).toBe(expected);
   });
 
   it('can remove a block generated from defaults', () => {
-    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible ';
+    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const expected = 'visible ';
 
-    expect(sut(input, {})).toBe(expected);
+    const output = sut(input, {});
+
+    expect(output).toBe(expected);
   });
 
   it('can remove a block generated from a string parameter', () => {
-    let options = {
+    const options = {
       blocks: ['debug'],
     };
+    const input = 'visible /* debug:start */ will be removed /* debug:end */';
+    const expected = 'visible ';
 
-    let input = 'visible /* debug:start */ will be removed /* debug:end */';
-    let expected = 'visible ';
+    const output = sut(input, options);
 
-    expect(sut(input, options)).toBe(expected);
+    expect(output).toBe(expected);
   });
 
   it('can remove a block generated from an object parameter', () => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',
@@ -81,10 +84,12 @@ describe('default test suite', () => {
         },
       ],
     };
-    let input = 'visible /* debug:start */ will be removed /* debug:end */';
-    let expected = 'visible ';
+    const input = 'visible /* debug:start */ will be removed /* debug:end */';
+    const expected = 'visible ';
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 
   it.each([
@@ -92,7 +97,7 @@ describe('default test suite', () => {
     ['spaces', 'visible <!-- debug:start --> will be removed <!-- debug:end -->', 'visible '],
     ['tabulations', 'visible <!--\tdebug:start\t--> will be removed <!--\tdebug:end\t-->', 'visible '],
   ])('can use %s between start/end and a label', (_, input, expected) => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',
@@ -102,11 +107,13 @@ describe('default test suite', () => {
       ],
     };
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 
   it('can use multiple characters between start/end and a label', () => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',
@@ -115,14 +122,16 @@ describe('default test suite', () => {
         },
       ],
     };
-    let input = 'visible <!--   debug:start   --> will be removed <!--\t \tdebug:end\t \t-->';
-    let expected = 'visible ';
+    const input = 'visible <!--   debug:start   --> will be removed <!--\t \tdebug:end\t \t-->';
+    const expected = 'visible ';
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 
   it('can use special characters in labels', () => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: '*devblock!',
@@ -131,28 +140,34 @@ describe('default test suite', () => {
         },
       ],
     };
-    let input = 'visible <!-- *devblock!:start --> will be removed <!-- *devblock!:end -->';
-    let expected = 'visible ';
+    const input = 'visible <!-- *devblock!:start --> will be removed <!-- *devblock!:end -->';
+    const expected = 'visible ';
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 
   it('can remove a block marked in lower case', () => {
-    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible ';
+    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const expected = 'visible ';
 
-    expect(sut(input, {})).toBe(expected);
+    const output = sut(input, {});
+
+    expect(output).toBe(expected);
   });
 
   it('cannot remove a block marked in upper case with default settings', () => {
-    let input = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
-    let expected = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
+    const input = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
+    const expected = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
 
-    expect(sut(input, {})).toBe(expected);
+    const output = sut(input, {});
+
+    expect(output).toBe(expected);
   });
 
-  it('can remove a block marked in upper case with provided settings', () => {
-    let options = {
+  it('can remove a block marked in upper case with the specific settings', () => {
+    const options = {
       blocks: [
         {
           label: 'DEVBLOCK',
@@ -161,10 +176,11 @@ describe('default test suite', () => {
         },
       ],
     };
+    const input = "visible /* DEVBLOCK:start */ won't be removed /* DEVBLOCK:end */";
+    const expected = 'visible ';
 
-    let input = "visible /* DEVBLOCK:start */ won't be removed /* DEVBLOCK:end */";
-    let expected = 'visible ';
+    const output = sut(input, options);
 
-    expect(sut(input, options)).toBe(expected);
+    expect(output).toBe(expected);
   });
 });

@@ -19,7 +19,9 @@ describe('removing test suite', () => {
       ],
     };
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 
   it.each([
@@ -38,6 +40,8 @@ describe('removing test suite', () => {
       ],
     };
 
-    expect(sut(input, options)).toBe(expected);
+    const output = sut(input, options);
+
+    expect(output).toBe(expected);
   });
 });
