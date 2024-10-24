@@ -23,7 +23,6 @@ module.exports = function addOne(num) {
           label: 'debug',
           start: '/*',
           end: '*/',
-          keepspace: true,
         },
       ],
     };
