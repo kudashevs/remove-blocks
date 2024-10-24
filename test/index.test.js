@@ -87,6 +87,70 @@ describe('default test suite', () => {
     expect(sut(input, options)).toBe(expected);
   });
 
+  it('can use no spaces between start/end and a label', () => {
+    let options = {
+      blocks: [
+        {
+          label: 'debug',
+          start: '<!--',
+          end: '-->',
+        },
+      ],
+    };
+    let input = 'visible <!--debug:start--> will be removed <!--debug:end-->';
+    let expected = 'visible ';
+
+    expect(sut(input, options)).toBe(expected);
+  });
+
+  it('can use spaces between start/end and a label', () => {
+    let options = {
+      blocks: [
+        {
+          label: 'debug',
+          start: '<!--',
+          end: '-->',
+        },
+      ],
+    };
+    let input = 'visible <!-- debug:start --> will be removed <!-- debug:end -->';
+    let expected = 'visible ';
+
+    expect(sut(input, options)).toBe(expected);
+  });
+
+  it('can use tabulations between start/end and a label', () => {
+    let options = {
+      blocks: [
+        {
+          label: 'debug',
+          start: '<!--',
+          end: '-->',
+        },
+      ],
+    };
+    let input = 'visible <!--\tdebug:start\t--> will be removed <!--\tdebug:end\t-->';
+    let expected = 'visible ';
+
+    expect(sut(input, options)).toBe(expected);
+  });
+
+  it('can use multiple characters between start/end and a label', () => {
+    let options = {
+      blocks: [
+        {
+          label: 'debug',
+          start: '<!--',
+          end: '-->',
+        },
+      ],
+    };
+    let input = 'visible <!--   debug:start   --> will be removed <!--\t \tdebug:end\t \t-->';
+    let expected = 'visible ';
+
+    expect(sut(input, options)).toBe(expected);
+  });
+
   it('can use special characters in labels', () => {
     let options = {
       blocks: [
