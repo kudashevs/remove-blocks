@@ -34,7 +34,7 @@ describe('default test suite', () => {
     const expected = '/* devblock:start */ visible /* devblock:end */';
 
     expect(process.env.NODE_ENV).toBe('test');
-    expect(sut(input, {exclude: ['test']})).toBe(expected);
+    expect(sut(input, {skips: ['test']})).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
