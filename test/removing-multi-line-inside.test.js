@@ -13,7 +13,7 @@ describe('removing multi-line inline test suite', () => {
   });
 
   it('can remove a multi-line comment inside string generated from an object parameter', () => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'dev',

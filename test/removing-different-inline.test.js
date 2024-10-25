@@ -9,7 +9,7 @@ describe('removing test suite', () => {
     ['visible /* debug:start */ will be removed /* debug:end */ visible', 'visible  visible'],
     ['  visible /* debug:start */ will be removed /* debug:end */  visible', '  visible   visible'],
   ])('can remove a multi-line comment "%s"', (input, expected) => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',
@@ -30,7 +30,7 @@ describe('removing test suite', () => {
     ['visible // debug:start will be removed // debug:end  ', 'visible '],
     ['  visible // debug:start will be removed // debug:end  ', '  visible '],
   ])('can remove a single-line comment "%s"', (input, expected) => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',

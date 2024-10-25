@@ -11,7 +11,7 @@ module.exports = function addOne(num) {
 }`;
 
   it('can remove a single-line comment generated from an object parameter', () => {
-    let options = {
+    const options = {
       blocks: [
         {
           label: 'debug',
