@@ -19,6 +19,7 @@ module.exports = [
       semi: ['warn', 'always'],
       'no-useless-escape': 'warn',
       'no-console': 'error',
+      'prefer-const': 'error',
     },
   },
 ];
