@@ -176,7 +176,7 @@ describe('default test suite', () => {
         },
       ],
     };
-    const input = "visible /* DEVBLOCK:start */ won't be removed /* DEVBLOCK:end */";
+    const input = 'visible /* DEVBLOCK:start */ will be removed /* DEVBLOCK:end */';
     const expected = 'visible ';
 
     const output = sut(input, options);
