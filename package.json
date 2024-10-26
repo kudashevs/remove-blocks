@@ -23,6 +23,10 @@
       "email": "kudashevs@gmail.com"
     }
   ],
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-errors": "^3.0.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "cross-env": "^7.0.3",
