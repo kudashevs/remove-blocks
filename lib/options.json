@@ -7,8 +7,8 @@
         "type": "string",
         "minLength": 1,
         "errorMessage": {
-          "type": "an environment.${0#} should be a string",
-          "minLength": "an environment.${0#} should be a non empty string"
+          "type": "skips.${0#} should be a string",
+          "minLength": "skips.${0#} should be a non empty string"
         }
       },
       "errorMessage": {
@@ -21,7 +21,7 @@
         "allOf": [
           {
             "type": ["string", "object"],
-            "errorMessage": "a block.${0#} should be a string or an object with all the necessary properties"
+            "errorMessage": "blocks.${0#} should be a string or a valid object"
           },
           {
             "if": {
@@ -31,8 +31,8 @@
               "type": "string",
               "minLength": 1,
               "errorMessage": {
-                "type": "a block.${0#} should be a string",
-                "minLength": "a block.${0#} should be a non empty string"
+                "type": "blocks.${0#} should be a string",
+                "minLength": "blocks.${0#} should be a non empty string"
               }
             }
           },
@@ -48,37 +48,29 @@
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "a label should be a string",
-                    "minLength": "a label should be a non empty string",
-                    "required": "a label is required"
+                    "type": "label should be a string",
+                    "minLength": "label should be a non empty string"
                   }
                 },
                 "start": {
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "a start should be a string",
-                    "minLength": "a start should be a non empty string",
-                    "required": "a start is required"
+                    "type": "start should be a string",
+                    "minLength": "start should be a non empty string"
                   }
                 },
                 "end": {
                   "type": "string",
                   "minLength": 0,
                   "errorMessage": {
-                    "type": "an end should be a string",
-                    "required": "an end is required"
+                    "type": "end should be a string"
                   }
                 }
               },
               "errorMessage": {
-                "type": "a block.${0#} should be an object",
-                "required": "a block.${0#} should be an object with label, start and end",
-                "properties": {
-                  "label": "the label is required",
-                  "start": "the start is required",
-                  "end": "the end is required"
-                }
+                "type": "blocks.${0#} should be an object",
+                "required": "blocks.${0#} should be an object (with label, start, end)"
               }
             }
           }
