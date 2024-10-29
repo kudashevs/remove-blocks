@@ -2,6 +2,7 @@ const sut = require('../lib/index');
 
 describe('default test suite', () => {
   const originalMode = process.env.NODE_ENV;
+  const defaultOptions = {blocks: ['devblock']};
 
   it.each([
     ['production', '/* devblock:start */ any /* devblock:end */', ''],
@@ -10,7 +11,7 @@ describe('default test suite', () => {
     process.env.NODE_ENV = environment;
 
     expect(process.env.NODE_ENV).toBe(environment);
-    expect(sut(input, {})).toBe(expected);
+    expect(sut(input, defaultOptions)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -22,7 +23,7 @@ describe('default test suite', () => {
     const expected = '/* devblock:start */ visible /* devblock:end */';
 
     expect(process.env.NODE_ENV).toBe('development');
-    expect(sut(input, {})).toBe(expected);
+    expect(sut(input, defaultOptions)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -152,7 +153,7 @@ describe('default test suite', () => {
     const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     const expected = 'visible ';
 
-    const output = sut(input, {});
+    const output = sut(input, defaultOptions);
 
     expect(output).toBe(expected);
   });
@@ -161,7 +162,7 @@ describe('default test suite', () => {
     const input = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
     const expected = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
 
-    const output = sut(input, {});
+    const output = sut(input, defaultOptions);
 
     expect(output).toBe(expected);
   });
