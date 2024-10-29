@@ -64,9 +64,7 @@ describe('default test suite', () => {
   });
 
   it('can remove a block generated from a string parameter', () => {
-    const options = {
-      blocks: ['debug'],
-    };
+    const options = {blocks: ['debug']};
     const input = 'visible /* debug:start */ will be removed /* debug:end */';
     const expected = 'visible ';
 
