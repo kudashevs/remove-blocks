@@ -77,9 +77,9 @@ describe('default test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '/*',
-          end: '*/',
+          name: 'debug',
+          prefix: '/*',
+          suffix: '*/',
         },
       ],
     };
@@ -99,9 +99,9 @@ describe('default test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '<!--',
-          end: '-->',
+          name: 'debug',
+          prefix: '<!--',
+          suffix: '-->',
         },
       ],
     };
@@ -115,9 +115,9 @@ describe('default test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '<!--',
-          end: '-->',
+          name: 'debug',
+          prefix: '<!--',
+          suffix: '-->',
         },
       ],
     };
@@ -133,9 +133,9 @@ describe('default test suite', () => {
     const options = {
       blocks: [
         {
-          label: '*devblock!',
-          start: '<!--',
-          end: '-->',
+          name: '*devblock!',
+          prefix: '<!--',
+          suffix: '-->',
         },
       ],
     };
@@ -169,9 +169,9 @@ describe('default test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'DEVBLOCK',
-          start: '/*',
-          end: '*/',
+          name: 'DEVBLOCK',
+          prefix: '/*',
+          suffix: '*/',
         },
       ],
     };

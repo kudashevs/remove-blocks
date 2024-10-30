@@ -16,9 +16,9 @@ describe('removing multi-line inline test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'dev',
-          start: '/*',
-          end: '*/',
+          name: 'dev',
+          prefix: '/*',
+          suffix: '*/',
         },
       ],
     };

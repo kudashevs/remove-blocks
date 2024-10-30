@@ -32,9 +32,9 @@ let fizzBuzz = function (n) {
     const options = {
       blocks: [
         {
-          label: 'dev',
-          start: '/*',
-          end: '*/',
+          name: 'dev',
+          prefix: '/*',
+          suffix: '*/',
         },
       ],
     };

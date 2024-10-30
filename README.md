@@ -19,9 +19,9 @@ yarn add --dev remove-blocks
 To describe different blocks, use the `blocks` array. Each element of this array describes a unique block to be removed
 and is represented by an object the following configuration properties:
 ```
-label: 'development',          # string value defines star and end labels of a block to remove
-start: '/*',                   # string value defines a start of a block
-end: '*/',                     # string value defines an end of a block
+name: 'devblock',              # string value defines the name of start/end tags (unique)
+prefix: '/*',                  # string value defines the beginning of a tag
+suffix: '*/',                  # string value defines the end of a tag
 ```
 
 

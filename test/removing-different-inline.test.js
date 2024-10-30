@@ -12,9 +12,9 @@ describe('removing test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '/*',
-          end: '*/',
+          name: 'debug',
+          prefix: '/*',
+          suffix: '*/',
         },
       ],
     };
@@ -33,9 +33,9 @@ describe('removing test suite', () => {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '//',
-          end: '',
+          name: 'debug',
+          prefix: '//',
+          suffix: '',
         },
       ],
     };

@@ -14,9 +14,9 @@ module.exports = function addOne(num) {
     const options = {
       blocks: [
         {
-          label: 'debug',
-          start: '//',
-          end: '',
+          name: 'debug',
+          prefix: '//',
+          suffix: '',
         },
       ],
     };

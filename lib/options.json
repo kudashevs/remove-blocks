@@ -42,35 +42,35 @@
             },
             "then": {
               "type": "object",
-              "required": ["label", "start", "end"],
+              "required": ["name", "prefix", "suffix"],
               "properties": {
-                "label": {
+                "name": {
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "label should be a string",
-                    "minLength": "label should be a non empty string"
+                    "type": "name should be a string",
+                    "minLength": "name should be a non empty string"
                   }
                 },
-                "start": {
+                "prefix": {
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "start should be a string",
-                    "minLength": "start should be a non empty string"
+                    "type": "prefix should be a string",
+                    "minLength": "prefix should be a non empty string"
                   }
                 },
-                "end": {
+                "suffix": {
                   "type": "string",
                   "minLength": 0,
                   "errorMessage": {
-                    "type": "end should be a string"
+                    "type": "suffix should be a string"
                   }
                 }
               },
               "errorMessage": {
                 "type": "blocks.${0#} should be an object",
-                "required": "blocks.${0#} should be an object (with label, start, end)"
+                "required": "blocks.${0#} should be an object (with name, prefix, suffix)"
               }
             }
           }

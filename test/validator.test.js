@@ -55,48 +55,48 @@ describe('options test suite', () => {
   it.each([
     ['first value is not a string neither an object', {blocks: [42]}, 'blocks.0 should be a string or a valid object'],
     ['first value is an empty string', {blocks: ['']}, 'blocks.0 should be a non empty string'],
-    ['first value is an empty object', {blocks: [{}]}, 'blocks.0 should be an object (with label, start, end)'],
+    ['first value is an empty object', {blocks: [{}]}, 'blocks.0 should be an object (with name, prefix, suffix)'],
     [
-      'first value is an object without label',
+      'first value is an object without name',
       {
-        blocks: [{start: 'any', stop: 'any'}],
+        blocks: [{prefix: 'any', stop: 'any'}],
       },
       /^blocks.0 should be an object/,
     ],
     [
-      'first value is an object with empty label',
+      'first value is an object with empty name',
       {
-        blocks: [{label: '', start: 'any', stop: 'any'}],
+        blocks: [{name: '', prefix: 'any', stop: 'any'}],
       },
-      'label should be a non empty string',
+      'name should be a non empty string',
     ],
     [
-      'first value is an object with empty start',
+      'first value is an object with empty prefix',
       {
-        blocks: [{label: 'any', start: '', stop: 'any'}],
+        blocks: [{name: 'any', prefix: '', stop: 'any'}],
       },
-      'start should be a non empty string',
+      'prefix should be a non empty string',
     ],
     [
       'second value is an empty string',
       {
-        blocks: [{label: 'any', start: 'any', end: 'any'}, ''],
+        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, ''],
       },
       'blocks.1 should be a non empty string',
     ],
     [
       'second value is an empty object',
       {
-        blocks: [{label: 'any', start: 'any', end: 'any'}, {}],
+        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, {}],
       },
-      'blocks.1 should be an object (with label, start, end)',
+      'blocks.1 should be an object (with name, prefix, suffix)',
     ],
     [
-      'second value is an object without label',
+      'second value is an object without name',
       {
         blocks: [
-          {label: 'any', start: 'any', end: 'any'},
-          {start: 'any', stop: 'any'},
+          {name: 'any', prefix: 'any', suffix: 'any'},
+          {prefix: 'any', stop: 'any'},
         ],
       },
       /^blocks.1 should be an object/,
@@ -110,47 +110,47 @@ describe('options test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first value is an object without end and empty label and start', () => {
+  it('fails with a combined error when in options.blocks the first value is an object without suffix and empty name and prefix', () => {
     const options = {
-      blocks: [{label: '', start: '', any: 'any'}],
+      blocks: [{name: '', prefix: '', any: 'any'}],
     };
 
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with label, start, end\) and.+label.+and.+start/);
+      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and.+name.+and.+prefix/);
     }
     expect.assertions(1);
   });
 
   it('fails with a combined error when in options.blocks the first value is an object that breaks all of the rules', () => {
     const options = {
-      blocks: [{label: '', start: '', end: 42}],
+      blocks: [{name: '', prefix: '', suffix: 42}],
     };
-    const configuration = {name: 'RemoveBlocks', order: {blocks: ['label', 'start', 'end']}};
+    const configuration = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
       sut(schema, options, configuration);
     } catch (e) {
-      expect(e.message).toMatch(/label should be a non empty string and.+start.+and.+end/);
+      expect(e.message).toMatch(/name should be a non empty string and.+prefix.+and.+suffix/);
     }
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first and second values are an object without end and empty label and start', () => {
+  it('fails with a combined error when in options.blocks the first and second values are an object without suffix and empty name and prefix', () => {
     const options = {
       blocks: [
-        {label: '', start: '', any: 'any'},
-        {label: '', start: '', any: 'any'},
+        {name: '', prefix: '', any: 'any'},
+        {name: '', prefix: '', any: 'any'},
       ],
     };
-    const configuration = {name: 'RemoveBlocks', order: {blocks: ['label', 'start', 'end']}};
+    const configuration = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
       sut(schema, options, configuration);
     } catch (e) {
-      // expect(e.message).toMatch('label should be a non empty string');
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with label, start, end\) and.+start.+and.+label/);
+      // expect(e.message).toMatch('name should be a non empty string');
+      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and.+prefix.+and.+name/);
     }
     expect.assertions(1);
   });
