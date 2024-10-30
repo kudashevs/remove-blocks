@@ -118,7 +118,7 @@ describe('options test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and.+name.+and.+prefix/);
+      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
     }
     expect.assertions(1);
   });
@@ -132,7 +132,7 @@ describe('options test suite', () => {
     try {
       sut(schema, options, configuration);
     } catch (e) {
-      expect(e.message).toMatch(/name should be a non empty string and.+prefix.+and.+suffix/);
+      expect(e.message).toMatch(/name should be a non empty string and prefix.+and.+suffix/);
     }
     expect.assertions(1);
   });
@@ -150,7 +150,7 @@ describe('options test suite', () => {
       sut(schema, options, configuration);
     } catch (e) {
       // expect(e.message).toMatch('name should be a non empty string');
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and.+prefix.+and.+name/);
+      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
     }
     expect.assertions(1);
   });
