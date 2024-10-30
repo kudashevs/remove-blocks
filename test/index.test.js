@@ -1,4 +1,5 @@
 const sut = require('../lib/index');
+const schema = require('../lib/options.json');
 
 describe('default test suite', () => {
   const originalMode = process.env.NODE_ENV;
@@ -40,6 +41,25 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
+  it('can handle an empty skips option', () => {
+    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
+
+    expect(sut(input, {skips: []})).toBe(expected);
+  });
+
+  it.each([
+    ['is of a wrong type', {skips: 'wrong'}, 'skips option must be an array'],
+    ['has a wrong value', {skips: [42]}, 'skips.0 should be a string'],
+  ])('can validate skips option when it %s', (_, options, expected) => {
+    try {
+      sut(schema, options);
+    } catch (e) {
+      expect(e.message).toBe(expected);
+    }
+    expect.assertions(1);
+  });
+
   it('can handle an empty blocks option', () => {
     const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
@@ -47,20 +67,16 @@ describe('default test suite', () => {
     expect(sut(input, {blocks: []})).toBe(expected);
   });
 
-  it('can handle an empty object in the blocks option', () => {
-    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
-
-    expect(sut(input, {blocks: [{}]})).toBe(expected);
-  });
-
-  it('can remove a block generated from defaults', () => {
-    const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    const expected = 'visible ';
-
-    const output = sut(input, {});
-
-    expect(output).toBe(expected);
+  it.each([
+    ['is of a wrong type', {blocks: 'wrong'}, 'blocks option must be an array'],
+    ['has a wrong value', {blocks: [42]}, 'blocks.0 should be a string or a valid object'],
+  ])('can validate blocks option when it %s', (_, options, expected) => {
+    try {
+      sut(schema, options);
+    } catch (e) {
+      expect(e.message).toBe(expected);
+    }
+    expect.assertions(1);
   });
 
   it('can remove a block generated from a string parameter', () => {
