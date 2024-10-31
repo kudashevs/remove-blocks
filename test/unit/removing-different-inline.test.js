@@ -1,4 +1,4 @@
-const sut = require('../lib/index');
+const sut = require('../../lib/index');
 
 describe('removing test suite', () => {
   it.each([

@@ -1,5 +1,5 @@
-const sut = require('../lib/validator');
-const schema = require('../lib/options.json');
+const sut = require('../../lib/validator');
+const schema = require('../../lib/options.json');
 
 describe('options test suite', () => {
   it('passes when options value is an empty object', () => {

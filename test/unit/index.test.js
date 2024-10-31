@@ -1,5 +1,5 @@
-const sut = require('../lib/index');
-const schema = require('../lib/options.json');
+const sut = require('../../lib/index');
+const schema = require('../../lib/options.json');
 
 describe('default test suite', () => {
   const originalMode = process.env.NODE_ENV;

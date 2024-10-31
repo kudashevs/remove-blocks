@@ -1,6 +1,6 @@
-const converter = require('./helpers/converter');
-const reader = require('./helpers/reader');
-const sut = require('../lib/index');
+const converter = require('../helpers/converter');
+const reader = require('../helpers/reader');
+const sut = require('../../lib/index');
 
 describe('test suite for the multi-line repeated case', () => {
   const input = reader('multi-line-repeated');
