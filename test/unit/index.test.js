@@ -1,3 +1,5 @@
+'use strict';
+
 const sut = require('../../lib/index');
 const schema = require('../../lib/options.json');
 

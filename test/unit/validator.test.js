@@ -1,3 +1,5 @@
+'use strict';
+
 const sut = require('../../lib/validator');
 const schema = require('../../lib/options.json');
 

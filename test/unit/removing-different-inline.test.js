@@ -1,3 +1,5 @@
+'use strict';
+
 const sut = require('../../lib/index');
 
 describe('remove different inlined blocks test suite', () => {

@@ -1,3 +1,5 @@
+'use strict';
+
 const converter = require('../helpers/converter');
 const reader = require('../helpers/reader');
 const sut = require('../../lib/index');
