@@ -2,7 +2,7 @@ const converter = require('../helpers/converter');
 const reader = require('../helpers/reader');
 const sut = require('../../lib/index');
 
-describe('removing multi-line inline test suite', () => {
+describe('remove multi-line inlined block inside code test suite', () => {
   const input = reader('multi-line-inside');
   const expected = `console.log('User was created ' + user.name + ' ' +  user.age);`;
 

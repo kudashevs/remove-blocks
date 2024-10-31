@@ -1,6 +1,6 @@
 const sut = require('../../lib/index');
 
-describe('removing test suite', () => {
+describe('remove different inlined blocks test suite', () => {
   it.each([
     ['visible /* debug:start */ will be removed /* debug:end */', 'visible '],
     ['  visible /* debug:start */ will be removed /* debug:end */', '  visible '],

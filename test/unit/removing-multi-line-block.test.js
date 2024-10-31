@@ -2,7 +2,7 @@ const converter = require('../helpers/converter');
 const reader = require('../helpers/reader');
 const sut = require('../../lib/index');
 
-describe('removing multi-line block test suite', () => {
+describe('remove multi-line block test suite', () => {
   const input = reader('multi-line-block');
   const expected = `/* this comment should not be removed */
 module.exports = function addOne(num) {

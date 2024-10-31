@@ -1,7 +1,7 @@
 const sut = require('../../lib/validator');
 const schema = require('../../lib/options.json');
 
-describe('options test suite', () => {
+describe('options validator test suite', () => {
   it('passes when options value is an empty object', () => {
     expect(() => sut(schema, {})).not.toThrow(Error);
   });
