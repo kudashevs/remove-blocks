@@ -4,7 +4,7 @@ const converter = require('../helpers/converter');
 const reader = require('../helpers/reader');
 const sut = require('../../lib/index');
 
-describe('remove repeated multi-line blocks test suite', () => {
+describe('remove repeated multi-line blocks from code test suite', () => {
   const input = reader('multi-line-repeated');
   const expected = `/* this comment should not be removed */
 let fizzBuzz = function (n) {

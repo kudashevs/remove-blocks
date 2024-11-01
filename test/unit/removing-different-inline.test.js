@@ -2,7 +2,7 @@
 
 const sut = require('../../lib/index');
 
-describe('remove different inlined blocks test suite', () => {
+describe('remove multi-line block from a line test suite', () => {
   it.each([
     ['visible /* debug:start */ will be removed /* debug:end */', 'visible '],
     ['  visible /* debug:start */ will be removed /* debug:end */', '  visible '],
@@ -25,7 +25,9 @@ describe('remove different inlined blocks test suite', () => {
 
     expect(output).toBe(expected);
   });
+});
 
+describe('remove single-line block from a line test suite', () => {
   it.each([
     ['visible // debug:start will be removed // debug:end', 'visible '],
     ['  visible // debug:start will be removed // debug:end', '  visible '],
