@@ -16,8 +16,8 @@ yarn add --dev remove-blocks
 
 ## Options
 
-To describe different blocks, use the `blocks` array. Each element of this array describes a unique block to be removed
-and is represented by an object the following configuration properties:
+To describe different blocks, provide the `blocks` array. Each element of this array describes a unique pair of tags
+with name, prefix, and suffix. These values are represented by an object with the following properties:
 ```
 name: 'devblock',              # string value defines the name of start/end tags (unique)
 prefix: '/*',                  # string value defines the beginning of a tag
