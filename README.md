@@ -1,7 +1,7 @@
 Remove Blocks ![test workflow](https://github.com/kudashevs/remove-blocks/actions/workflows/run-tests.yml/badge.svg)
 ==========================
 
-The `remove-blocks` is a small library that removes marked blocks from any type of code.
+The `remove-blocks` is a library that removes marked blocks from any type of code.
 
 
 ## Install
