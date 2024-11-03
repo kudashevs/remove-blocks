@@ -14,7 +14,7 @@ describe('specification test', () => {
     expect.assertions(1);
   });
 
-  it('should validate and fail on a skips option with a wrong value', () => {
+  it('should validate and fail on a blocks option with a wrong value', () => {
     const options = {blocks: [42]};
 
     try {
