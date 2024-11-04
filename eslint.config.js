@@ -13,7 +13,7 @@ module.exports = [
         ...globals.jest,
       },
       ecmaVersion: 2020,
-      sourceType: 'module',
+      sourceType: 'commonjs',
     },
     rules: {
       semi: ['warn', 'always'],
