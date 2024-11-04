@@ -15,7 +15,4 @@ All notable changes to this project will be documented in this file.
 
 ## v1.0.0 - 2024-11-01
 
-- Add RemoveBlocks basic implementation
-- Add validator with options schema
-- Add README.md
-
+- Initial release
