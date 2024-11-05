@@ -147,7 +147,7 @@ describe('default test suite', () => {
     expect(output).toBe(expected);
   });
 
-  it('can use special characters in labels', () => {
+  it('can use special characters in names', () => {
     const options = {
       blocks: [
         {
@@ -174,7 +174,7 @@ describe('default test suite', () => {
     expect(output).toBe(expected);
   });
 
-  it('cannot remove a block marked in upper case with default settings', () => {
+  it('cannot remove a block marked in upper case with default options', () => {
     const input = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
     const expected = "visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */";
 
@@ -183,7 +183,7 @@ describe('default test suite', () => {
     expect(output).toBe(expected);
   });
 
-  it('can remove a block marked in upper case with the specific settings', () => {
+  it('can remove a block marked in upper case with the specific options', () => {
     const options = {
       blocks: [
         {
