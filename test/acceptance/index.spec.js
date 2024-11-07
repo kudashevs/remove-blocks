@@ -47,7 +47,7 @@ describe('specification test', () => {
     <!-- dev:end -->`;
     const expected = 'test\n';
 
-    expect(sut(input, options)).toBe(expected);
+    expect(sut(input, options)).toStrictEqual(expected);
   });
 
   it('should remove a single-line block marked with the provided options', () => {
@@ -58,7 +58,7 @@ describe('specification test', () => {
     // dev:end`;
     const expected = 'test\n';
 
-    expect(sut(input, options)).toBe(expected);
+    expect(sut(input, options)).toStrictEqual(expected);
   });
 
   it('should remove an inlined multi-line block with the provided options', () => {
@@ -66,7 +66,7 @@ describe('specification test', () => {
     const input = `test<!-- dev:start -->console.log('log an operation')<!-- dev:end -->`;
     const expected = 'test';
 
-    expect(sut(input, options)).toBe(expected);
+    expect(sut(input, options)).toStrictEqual(expected);
   });
 
   it('should remove repeated blocks with the provided options', () => {
@@ -74,7 +74,7 @@ describe('specification test', () => {
     const input = `<!-- dev:start -->console.log('log an operation')<!-- dev:end -->test<!-- dev:start -->console.log('log an operation')<!-- dev:end -->`;
     const expected = 'test';
 
-    expect(sut(input, options)).toBe(expected);
+    expect(sut(input, options)).toStrictEqual(expected);
   });
 
   it('should remove multiple blocks with the provided options', () => {
@@ -85,6 +85,6 @@ describe('specification test', () => {
     /* dev:end */`;
     const expected = 'test\n';
 
-    expect(sut(input, options)).toBe(expected);
+    expect(sut(input, options)).toStrictEqual(expected);
   });
 });

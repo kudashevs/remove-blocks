@@ -12,8 +12,8 @@ describe('default test suite', () => {
   ])('proceeds in %s environment', (environment, input, expected) => {
     process.env.NODE_ENV = environment;
 
-    expect(process.env.NODE_ENV).toBe(environment);
-    expect(sut(input, defaultOptions)).toBe(expected);
+    expect(process.env.NODE_ENV).toStrictEqual(environment);
+    expect(sut(input, defaultOptions)).toStrictEqual(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -24,8 +24,8 @@ describe('default test suite', () => {
     const input = '/* devblock:start */ visible /* devblock:end */';
     const expected = '/* devblock:start */ visible /* devblock:end */';
 
-    expect(process.env.NODE_ENV).toBe('development');
-    expect(sut(input, defaultOptions)).toBe(expected);
+    expect(process.env.NODE_ENV).toStrictEqual('development');
+    expect(sut(input, defaultOptions)).toStrictEqual(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -36,8 +36,8 @@ describe('default test suite', () => {
     const input = '/* devblock:start */ visible /* devblock:end */';
     const expected = '/* devblock:start */ visible /* devblock:end */';
 
-    expect(process.env.NODE_ENV).toBe('test');
-    expect(sut(input, {skips: ['test']})).toBe(expected);
+    expect(process.env.NODE_ENV).toStrictEqual('test');
+    expect(sut(input, {skips: ['test']})).toStrictEqual(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -46,7 +46,7 @@ describe('default test suite', () => {
     const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
 
-    expect(sut(input, {skips: []})).toBe(expected);
+    expect(sut(input, {skips: []})).toStrictEqual(expected);
   });
 
   it.each([
@@ -56,7 +56,7 @@ describe('default test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe(expected);
+      expect(e.message).toStrictEqual(expected);
     }
     expect.assertions(1);
   });
@@ -65,7 +65,7 @@ describe('default test suite', () => {
     const input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     const expected = 'visible /* devblock:start */ will be removed /* devblock:end */';
 
-    expect(sut(input, {blocks: []})).toBe(expected);
+    expect(sut(input, {blocks: []})).toStrictEqual(expected);
   });
 
   it.each([
@@ -75,7 +75,7 @@ describe('default test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe(expected);
+      expect(e.message).toStrictEqual(expected);
     }
     expect.assertions(1);
   });
@@ -87,7 +87,7 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('can remove a block generated from an object parameter', () => {
@@ -105,7 +105,7 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it.each([
@@ -125,7 +125,7 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('can use multiple characters between start/end and a label', () => {
@@ -143,7 +143,7 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('can use special characters in names', () => {
@@ -161,7 +161,7 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('can remove a block marked in lower case', () => {
@@ -170,7 +170,7 @@ describe('default test suite', () => {
 
     const output = sut(input, defaultOptions);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('cannot remove a block marked in upper case with default options', () => {
@@ -179,7 +179,7 @@ describe('default test suite', () => {
 
     const output = sut(input, defaultOptions);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 
   it('can remove a block marked in upper case with the specific options', () => {
@@ -197,6 +197,6 @@ describe('default test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 });

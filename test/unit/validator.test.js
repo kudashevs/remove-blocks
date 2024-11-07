@@ -1,5 +1,3 @@
-'use strict';
-
 const {describe, it, expect} = require('@jest/globals');
 const sut = require('../../lib/validator');
 const schema = require('../../lib/options.json');
@@ -15,7 +13,7 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe('must be an object');
+      expect(e.message).toStrictEqual('must be an object');
     }
     expect.assertions(1);
   });
@@ -26,7 +24,7 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe('skips option must be an array');
+      expect(e.message).toStrictEqual('skips option must be an array');
     }
     expect.assertions(1);
   });
@@ -39,7 +37,7 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe(expected);
+      expect(e.message).toStrictEqual(expected);
     }
     expect.assertions(1);
   });
@@ -50,7 +48,7 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toBe('blocks option must be an array');
+      expect(e.message).toStrictEqual('blocks option must be an array');
     }
     expect.assertions(1);
   });

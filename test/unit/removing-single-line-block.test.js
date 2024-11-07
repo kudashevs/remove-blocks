@@ -24,6 +24,6 @@ module.exports = function addOne(num) {
 
     const output = sut(input, options);
 
-    expect(converter(output)).toBe(converter(expected));
+    expect(converter(output)).toStrictEqual(converter(expected));
   });
 });

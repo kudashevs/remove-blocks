@@ -22,7 +22,7 @@ describe('remove multi-line block from a line test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 });
 
@@ -45,6 +45,6 @@ describe('remove single-line block from a line test suite', () => {
 
     const output = sut(input, options);
 
-    expect(output).toBe(expected);
+    expect(output).toStrictEqual(expected);
   });
 });

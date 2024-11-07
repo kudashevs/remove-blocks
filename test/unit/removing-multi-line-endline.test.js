@@ -14,7 +14,7 @@ module.exports = function addOne(num) {
   it('can remove a multi-line comment generated from a string parameter', () => {
     const output = sut(input, {blocks: ['debug']});
 
-    expect(converter(output)).toBe(converter(expected));
+    expect(converter(output)).toStrictEqual(converter(expected));
   });
 
   it('can remove a multi-line comment generated from an object parameter', () => {
@@ -30,6 +30,6 @@ module.exports = function addOne(num) {
 
     const output = sut(input, options);
 
-    expect(converter(output)).toBe(converter(expected));
+    expect(converter(output)).toStrictEqual(converter(expected));
   });
 });

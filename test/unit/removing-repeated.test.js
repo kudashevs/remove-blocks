@@ -26,7 +26,7 @@ let fizzBuzz = function (n) {
   it('can remove blocks generated from a string parameter', () => {
     const output = sut(input, {blocks: ['dev']});
 
-    expect(converter(output)).toBe(converter(expected));
+    expect(converter(output)).toStrictEqual(converter(expected));
   });
 
   it('can remove blocks generated from an object parameter', () => {
@@ -42,6 +42,6 @@ let fizzBuzz = function (n) {
 
     const output = sut(input, options);
 
-    expect(converter(output)).toBe(converter(expected));
+    expect(converter(output)).toStrictEqual(converter(expected));
   });
 });
