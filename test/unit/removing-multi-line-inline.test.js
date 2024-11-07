@@ -1,5 +1,4 @@
-'use strict';
-
+const {describe, it, expect} = require('@jest/globals');
 const converter = require('../helpers/converter');
 const reader = require('../helpers/reader');
 const sut = require('../../lib/index');

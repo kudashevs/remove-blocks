@@ -1,3 +1,4 @@
+const {describe, it, expect} = require('@jest/globals');
 const sut = require('../../lib/index');
 const schema = require('../../lib/options.json');
 const config = require('../../lib/config.json');

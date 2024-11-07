@@ -1,5 +1,4 @@
-'use strict';
-
+const {describe, it, expect} = require('@jest/globals');
 const sut = require('../../lib/index');
 
 describe('remove multi-line block from a line test suite', () => {

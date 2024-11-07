@@ -1,5 +1,6 @@
 'use strict';
 
+const {describe, it, expect} = require('@jest/globals');
 const sut = require('../../lib/validator');
 const schema = require('../../lib/options.json');
 
