@@ -128,10 +128,10 @@ describe('options validator test suite', () => {
     const options = {
       blocks: [{name: '', prefix: '', suffix: 42}],
     };
-    const configuration = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
+    const config = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
-      sut(schema, options, configuration);
+      sut(schema, options, config);
     } catch (e) {
       expect(e.message).toMatch(/name should be a non empty string and prefix.+and.+suffix/);
     }
@@ -145,10 +145,10 @@ describe('options validator test suite', () => {
         {name: '', prefix: '', any: 'any'},
       ],
     };
-    const configuration = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
+    const config = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
-      sut(schema, options, configuration);
+      sut(schema, options, config);
     } catch (e) {
       // expect(e.message).toMatch('name should be a non empty string');
       expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
