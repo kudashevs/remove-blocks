@@ -150,7 +150,6 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options, config);
     } catch (e) {
-      // expect(e.message).toMatch('name should be a non empty string');
       expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
     }
     expect.assertions(1);
