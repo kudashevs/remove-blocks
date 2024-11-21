@@ -60,21 +60,21 @@ describe('options validator test suite', () => {
     [
       'first value is an object without name',
       {
-        blocks: [{prefix: 'any', stop: 'any'}],
+        blocks: [{prefix: 'any', suffix: 'any'}],
       },
       /^blocks.0 should be an object/,
     ],
     [
       'first value is an object with empty name',
       {
-        blocks: [{name: '', prefix: 'any', stop: 'any'}],
+        blocks: [{name: '', prefix: 'any', suffix: 'any'}],
       },
       'name should be a non empty string',
     ],
     [
       'first value is an object with empty prefix',
       {
-        blocks: [{name: 'any', prefix: '', stop: 'any'}],
+        blocks: [{name: 'any', prefix: '', suffix: 'any'}],
       },
       'prefix should be a non empty string',
     ],
@@ -97,7 +97,7 @@ describe('options validator test suite', () => {
       {
         blocks: [
           {name: 'any', prefix: 'any', suffix: 'any'},
-          {prefix: 'any', stop: 'any'},
+          {prefix: 'any', suffix: 'any'},
         ],
       },
       /^blocks.1 should be an object/,
