@@ -1,6 +1,6 @@
 {
   "name": "remove-blocks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A library that removes marked blocks from any type of code.",
   "license": "MIT",
   "type": "commonjs",
