@@ -14,6 +14,19 @@ yarn add --dev remove-blocks
 ```
 
 
+## Usage
+
+It removes blocks of code marked with two paired tags. A pair of tags consists of a start tag and an end tag. The format
+of each tag is `prefix name:position suffix` (e.g. `/* debug:start */`). The name, prefix, and suffix are configurable.
+```js
+/* debug:start */ 
+console.log('debug');
+/* debug:end */
+```
+
+**Note**: The blocks cannot overlap each other.
+
+
 ## Options
 
 `options.skips` an array of environments where the processing will be skipped.
