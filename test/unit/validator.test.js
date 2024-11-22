@@ -128,7 +128,7 @@ describe('options validator test suite', () => {
     const options = {
       blocks: [{name: '', prefix: '', suffix: 42}],
     };
-    const config = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
+    const config = {name: 'RemoveBlocks', orders: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
       sut(schema, options, config);
@@ -145,7 +145,7 @@ describe('options validator test suite', () => {
         {name: '', prefix: '', any: 'any'},
       ],
     };
-    const config = {name: 'RemoveBlocks', order: {blocks: ['name', 'prefix', 'suffix']}};
+    const config = {name: 'RemoveBlocks', orders: {blocks: ['name', 'prefix', 'suffix']}};
 
     try {
       sut(schema, options, config);
