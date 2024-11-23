@@ -70,7 +70,7 @@
               },
               "errorMessage": {
                 "type": "blocks.${0#} should be an object",
-                "required": "blocks.${0#} should be an object (with name, prefix, suffix)"
+                "required": "blocks.${0#} should be a valid object with name, prefix, suffix"
               }
             }
           }
