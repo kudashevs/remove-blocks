@@ -177,7 +177,9 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options);
     } catch (e) {
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
+      expect(e.message).toMatch(
+        /^blocks.0 should be a valid object with name, prefix, suffix and blocks.0.name.+and.+prefix/,
+      );
     }
     expect.assertions(1);
   });
@@ -191,7 +193,7 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options, config);
     } catch (e) {
-      expect(e.message).toMatch(/name should be a non empty string and prefix.+and.+suffix/);
+      expect(e.message).toMatch(/blocks.0.name should be a non empty string and blocks.0.prefix.+and.+suffix/);
     }
     expect.assertions(1);
   });
@@ -208,7 +210,9 @@ describe('options validator test suite', () => {
     try {
       sut(schema, options, config);
     } catch (e) {
-      expect(e.message).toMatch(/^blocks.0 should be an object \(with name, prefix, suffix\) and name.+and.+prefix/);
+      expect(e.message).toMatch(
+        /^blocks.0 should be a valid object with name, prefix, suffix and blocks.0.name.+and.+prefix.+and.+blocks.1/,
+      );
     }
     expect.assertions(1);
   });
