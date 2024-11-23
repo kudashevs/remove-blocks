@@ -68,42 +68,42 @@ describe('options validator test suite', () => {
 
   it.each([
     [
-      'first value is an object without name',
+      'first element is an object without name',
       {
         blocks: [{prefix: 'any', suffix: 'any'}],
       },
       /^blocks.0 should be an object/,
     ],
     [
-      'first value is an object with empty name',
+      'first element is an object with empty name',
       {
         blocks: [{name: '', prefix: 'any', suffix: 'any'}],
       },
       'name should be a non empty string',
     ],
     [
-      'first value is an object with empty prefix',
+      'first element is an object with empty prefix',
       {
         blocks: [{name: 'any', prefix: '', suffix: 'any'}],
       },
       'prefix should be a non empty string',
     ],
     [
-      'second value is an empty string',
+      'second element is an empty string',
       {
         blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, ''],
       },
       'blocks.1 should be a non empty string',
     ],
     [
-      'second value is an empty object',
+      'second element is an empty object',
       {
         blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, {}],
       },
       'blocks.1 should be an object (with name, prefix, suffix)',
     ],
     [
-      'second value is an object without name',
+      'second element is an object without name',
       {
         blocks: [
           {name: 'any', prefix: 'any', suffix: 'any'},
@@ -112,7 +112,7 @@ describe('options validator test suite', () => {
       },
       /^blocks.1 should be an object/,
     ],
-  ])('fails when in options.blocks the %s', (_, options, expected) => {
+  ])('fails when options.blocks value of the %s', (_, options, expected) => {
     try {
       sut(schema, options);
     } catch (e) {
