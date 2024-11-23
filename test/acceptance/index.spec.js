@@ -34,7 +34,7 @@ describe('specification test', () => {
     try {
       sut(schema, options, config);
     } catch (e) {
-      expect(e.message).toMatch(/name should be a non empty string and prefix.+and.+suffix/);
+      expect(e.message).toMatch(/name should be a non empty string and.+prefix.+and.+suffix/);
     }
     expect.assertions(1);
   });
