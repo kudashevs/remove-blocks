@@ -30,9 +30,9 @@ describe('options validator test suite', () => {
   });
 
   it.each([
-    ['first value is not a string', {skips: [42]}, 'skips.0 should be a string'],
-    ['first value is an empty string', {skips: ['']}, 'skips.0 should be a non empty string'],
-    ['second value is an empty string', {skips: ['test', '']}, 'skips.1 should be a non empty string'],
+    ['first element is not a string', {skips: [42]}, 'skips.0 should be a string'],
+    ['first element is an empty string', {skips: ['']}, 'skips.0 should be a non empty string'],
+    ['second element is an empty string', {skips: ['test', '']}, 'skips.1 should be a non empty string'],
   ])('fails when in options.skips the %s', (_, options, expected) => {
     try {
       sut(schema, options);
@@ -42,7 +42,7 @@ describe('options validator test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails when options.blocks value is not an array', () => {
+  it('fails when options.blocks element is not an array', () => {
     const options = {blocks: 'wrong'};
 
     try {
@@ -54,9 +54,9 @@ describe('options validator test suite', () => {
   });
 
   it.each([
-    ['first value is not a string neither an object', {blocks: [42]}, 'blocks.0 should be a string or a valid object'],
-    ['first value is an empty string', {blocks: ['']}, 'blocks.0 should be a non empty string'],
-    ['first value is an empty object', {blocks: [{}]}, 'blocks.0 should be a valid object with name, prefix, suffix'],
+    ['first element is not a string neither an object', {blocks: [42]}, 'blocks.0 should be a string or a valid'],
+    ['first element is an empty string', {blocks: ['']}, 'blocks.0 should be a non empty string'],
+    ['first element is an empty object', {blocks: [{}]}, 'blocks.0 should be a valid object with name, prefix, suffix'],
     [
       'second element is an empty string',
       {
@@ -169,7 +169,7 @@ describe('options validator test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first value is an object without suffix and empty name and prefix', () => {
+  it('fails with a combined error when in options.blocks the first element is an object without suffix and empty name and prefix', () => {
     const options = {
       blocks: [{name: '', prefix: '', any: 'any'}],
     };
@@ -184,7 +184,7 @@ describe('options validator test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first value is an object that breaks all of the rules', () => {
+  it('fails with a combined error when in options.blocks the first element is an object that breaks all of the rules', () => {
     const options = {
       blocks: [{name: '', prefix: '', suffix: 42}],
     };
@@ -198,7 +198,7 @@ describe('options validator test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first and second values are objects without suffix and empty name and prefix', () => {
+  it('fails with a combined error when in options.blocks the first and second elements are objects without suffix and empty name and prefix', () => {
     const options = {
       blocks: [
         {name: '', prefix: '', any: 'any'},
