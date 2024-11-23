@@ -146,7 +146,19 @@ describe('default test suite', () => {
     expect(output).toStrictEqual(expected);
   });
 
-  it('can use special characters in names', () => {
+  it('can use special characters in names from a string', () => {
+    const options = {
+      blocks: ['*devblock!'],
+    };
+    const input = 'visible /* *devblock!:start */ will be removed /* *devblock!:end */';
+    const expected = 'visible ';
+
+    const output = sut(input, options);
+
+    expect(output).toStrictEqual(expected);
+  });
+
+  it('can use special characters in names from an object', () => {
     const options = {
       blocks: [
         {
