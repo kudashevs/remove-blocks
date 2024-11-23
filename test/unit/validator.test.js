@@ -57,6 +57,20 @@ describe('options validator test suite', () => {
     ['first value is not a string neither an object', {blocks: [42]}, 'blocks.0 should be a string or a valid object'],
     ['first value is an empty string', {blocks: ['']}, 'blocks.0 should be a non empty string'],
     ['first value is an empty object', {blocks: [{}]}, 'blocks.0 should be a valid object with name, prefix, suffix'],
+    [
+      'second element is an empty string',
+      {
+        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, ''],
+      },
+      'blocks.1 should be a non empty string',
+    ],
+    [
+      'second element is an empty object',
+      {
+        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, {}],
+      },
+      'blocks.1 should be a valid object with name, prefix, suffix',
+    ],
   ])('fails when in options.blocks the %s', (_, options, expected) => {
     try {
       sut(schema, options);
@@ -135,20 +149,6 @@ describe('options validator test suite', () => {
         blocks: [{name: 'any', prefix: '', suffix: 'any'}],
       },
       'prefix should be a non empty string',
-    ],
-    [
-      'second element is an empty string',
-      {
-        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, ''],
-      },
-      'blocks.1 should be a non empty string',
-    ],
-    [
-      'second element is an empty object',
-      {
-        blocks: [{name: 'any', prefix: 'any', suffix: 'any'}, {}],
-      },
-      'blocks.1 should be a valid object with name, prefix, suffix',
     ],
     [
       'second element is an object without name',
