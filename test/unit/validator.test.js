@@ -72,28 +72,28 @@ describe('options validator test suite', () => {
       {
         blocks: [{name: 42, prefix: 'any', suffix: 'any'}],
       },
-      'blocks.0.name should be a string',
+      /^blocks.0.name should be a string/,
     ],
     [
       'prefix in the first element is wrong',
       {
         blocks: [{name: 'any', prefix: 42, suffix: 'any'}],
       },
-      'blocks.0.prefix should be a string',
+      /^blocks.0.prefix should be a string/,
     ],
     [
       'suffix in the first element is wrong',
       {
         blocks: [{name: 'any', prefix: 'any', suffix: 42}],
       },
-      'blocks.0.suffix should be a string',
+      /^blocks.0.suffix should be a string/,
     ],
     [
       'prefix and suffix in the first element are wrong',
       {
         blocks: [{name: 'any', prefix: 42, suffix: 42}],
       },
-      'blocks.0.prefix should be a string and blocks.0.suffix should be a string',
+      /^blocks.0.prefix should be a string and blocks.0.suffix should be a string/,
     ],
     [
       'name in the second element is wrong',
