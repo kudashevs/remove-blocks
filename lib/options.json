@@ -48,7 +48,7 @@
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "name should be a string",
+                    "type": "blocks.${1#}.name should be a string",
                     "minLength": "name should be a non empty string"
                   }
                 },
@@ -56,7 +56,7 @@
                   "type": "string",
                   "minLength": 1,
                   "errorMessage": {
-                    "type": "prefix should be a string",
+                    "type": "blocks.${1#}.prefix should be a string",
                     "minLength": "prefix should be a non empty string"
                   }
                 },
@@ -64,7 +64,7 @@
                   "type": "string",
                   "minLength": 0,
                   "errorMessage": {
-                    "type": "suffix should be a string"
+                    "type": "blocks.${1#}.suffix should be a string"
                   }
                 }
               },
