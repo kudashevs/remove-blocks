@@ -57,6 +57,16 @@ describe('options validator test suite', () => {
     ['first value is not a string neither an object', {blocks: [42]}, 'blocks.0 should be a string or a valid object'],
     ['first value is an empty string', {blocks: ['']}, 'blocks.0 should be a non empty string'],
     ['first value is an empty object', {blocks: [{}]}, 'blocks.0 should be an object (with name, prefix, suffix)'],
+  ])('fails when in options.blocks the %s', (_, options, expected) => {
+    try {
+      sut(schema, options);
+    } catch (e) {
+      expect(e.message).toMatch(expected);
+    }
+    expect.assertions(1);
+  });
+
+  it.each([
     [
       'first value is an object without name',
       {
