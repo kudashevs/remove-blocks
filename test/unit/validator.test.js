@@ -138,7 +138,7 @@ describe('options validator test suite', () => {
     expect.assertions(1);
   });
 
-  it('fails with a combined error when in options.blocks the first and second values are an object without suffix and empty name and prefix', () => {
+  it('fails with a combined error when in options.blocks the first and second values are objects without suffix and empty name and prefix', () => {
     const options = {
       blocks: [
         {name: '', prefix: '', any: 'any'},
