@@ -38,6 +38,7 @@ name: 'devblock',              # a string defines a name of the start/end tags (
 prefix: '/*',                  # a string defines the beginning of a tag (non-empty string)
 suffix: '*/',                  # a string defines the end of a tag (can be an empty string)
 ```
+When a pair of tags is represented by a string, the default prefix and suffix are used (e.g. `/*` and `*/`).
 
 
 ## License
