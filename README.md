@@ -32,11 +32,11 @@ console.log('debug');
 `options.skips` an array of environments where the processing will be skipped.
 
 `options.blocks` an array of blocks' representations. Each element of this array describes a unique pair of tags with
-name, prefix, and suffix. These values are represented by a string or an object with the following properties:
+name, prefix, and suffix. These values are represented by an object with the mandatory properties or by a string:
 ```
-name: 'devblock',              # string value defines the name of start/end tags (unique)
-prefix: '/*',                  # string value defines the beginning of a tag
-suffix: '*/',                  # string value defines the end of a tag
+name: 'devblock',              # a string defines a name of the start/end tags (unique)
+prefix: '/*',                  # a string defines the beginning of a tag (non-empty string)
+suffix: '*/',                  # a string defines the end of a tag (can be an empty string)
 ```
 
 
