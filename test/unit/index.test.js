@@ -112,7 +112,7 @@ describe('default test suite', () => {
     ['no spaces', 'visible <!--debug:start--> will be removed <!--debug:end-->', 'visible '],
     ['spaces', 'visible <!-- debug:start --> will be removed <!-- debug:end -->', 'visible '],
     ['tabulations', 'visible <!--\tdebug:start\t--> will be removed <!--\tdebug:end\t-->', 'visible '],
-  ])('can use %s between start/end and a label', (_, input, expected) => {
+  ])('can use %s between start/end and a name', (_, input, expected) => {
     const options = {
       blocks: [
         {
@@ -128,7 +128,7 @@ describe('default test suite', () => {
     expect(output).toStrictEqual(expected);
   });
 
-  it('can use multiple characters between start/end and a label', () => {
+  it('can use multiple characters between start/end and a name', () => {
     const options = {
       blocks: [
         {
