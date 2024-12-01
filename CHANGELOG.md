@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/kudashevs/remove-blocks/compare/v1.1.0...v1.2.0) - 2024-12-01
+
+- Add a replacement feature
+- Update README.md
+- Some refactoring
+- Some improvements
+
 ## [1.1.1](https://github.com/kudashevs/remove-blocks/compare/v1.0.3...v1.1.0) - 2024-11-24
 
 - Add positions to validation errors
