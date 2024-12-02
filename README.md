@@ -29,15 +29,15 @@ console.log('debug');
 
 ## Options
 
-`options.skips` an array of environments where the processing will be skipped.
+`options.skips` is an array of environments where the processing will be skipped.
 
-`options.blocks` an array of blocks' representations. Each element of this array describes a unique pair of tags with
-name, prefix, and suffix. These values are represented by an object with these properties or by a string:
+`options.blocks` is an array of blocks' representations. Each element of this array describes a unique pair of tags with
+name, prefix, suffix and optional replacement. These values are represented by an object with these properties or by a string:
 ```
-name: 'devblock',              # a string defines a name for the start/end tags (unique) - mandatory
-prefix: '/*',                  # a string defines the beginning of a tag (non-empty string) - mandatory
-suffix: '*/',                  # a string defines the end of a tag (can be an empty string) - mandatory
-replacement: 'any'             # a string defines a substitution for a removed block - optional
+name: 'devblock'             # a string defines a name for the start/end tags (unique) - mandatory
+prefix: '/*'                 # a string defines the beginning of a tag (non-empty string) - mandatory
+suffix: '*/'                 # a string defines the end of a tag (can be an empty string) - mandatory
+replacement: 'any'           # a string defines a substitution for a removed block - optional
 ```
 When a pair of tags is represented by a string, the default prefix and suffix are used (e.g. `/*` and `*/`).
 
