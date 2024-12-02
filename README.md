@@ -39,7 +39,8 @@ prefix: '/*'                 # a string defines the beginning of a tag (non-empt
 suffix: '*/'                 # a string defines the end of a tag (can be an empty string) - mandatory
 replacement: 'any'           # a string defines a substitution for a removed block - optional
 ```
-When a pair of tags is represented by a string, the default prefix and suffix are used (e.g. `/*` and `*/`).
+When a pair of tags is represented by a string, this string will be used as a name for the start and end tag (e.g.
+`string:start` and `string:end`), and the default prefix and suffix are used (e.g. `/*` and `*/`).
 
 
 ## License
