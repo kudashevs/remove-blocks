@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/kudashevs/remove-blocks/compare/v1.2.0...v2.0.0) - 2026-08-17
+
+- Drop support for Node 18, 20, 21, 23
+- Major bump of eslint to 10.x
+- Major bump of jest to 30.x
+- Some improvements
+
 ## [1.2.0](https://github.com/kudashevs/remove-blocks/compare/v1.1.0...v1.2.0) - 2024-12-01
 
 - Add a replacement feature
